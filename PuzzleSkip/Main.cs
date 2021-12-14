@@ -80,6 +80,14 @@ namespace PuzzleSkip
             };
             DominoPuzzleHelper.SkipDominoReqs(greenChecker, greenArea, greenDominoes, ref __instance);
 
+            string yellowChecker = "00016e6128651a548b2c50f23456a3e0"; //yellowPuzzleSolveChecker
+            string yellowArea = "50062f5d95939b746bbbe950ceff89d4"; //GlobalPuzzle_Yellow AKA Heart of Mystery
+            string[] yellowDominoes =
+            {
+                "9ddb1f6eb52579f42bcc6767c25de24c" //DominoFlask1
+            };
+            DominoPuzzleHelper.SkipDominoReqs(yellowChecker, yellowArea, yellowDominoes, ref __instance);
+
 
 
             Main.Logger.Log("PuzzleSkip BlueprintsCache finish");
