@@ -34,39 +34,55 @@ namespace PuzzleSkip
         [HarmonyPostfix]
         public static void Init(ref BlueprintsCache __instance)
         {
-            Main.Logger.Log("PuzzleSkip start");
+            Main.Logger.Log("PuzzleSkip BlueprintsCache start");
 
-            // Load etude for Conundrum Unsolved completion
-            BlueprintGuid guid = BlueprintGuid.Parse("93386bb28305e764f91f81a506c866fc"); //OrangeSolveChecker
-            SimpleBlueprint SB = __instance.Load(guid);
-            Main.Logger.Log("Loaded " + SB.name);
-            BlueprintEtude ConundrumUnsolvedChecker = (BlueprintEtude)SB;
-            
-            // Alter completion conditions
-            // Conundrum Unsolved
-            ItemsEnough dominoCheck = new ItemsEnough();
-            dominoCheck.Quantity = 1;
-            dominoCheck.m_ItemToCheck = new BlueprintItemReference();
-            dominoCheck.m_ItemToCheck.ReadGuidFromGuid(BlueprintGuid.Parse("afc2f5e747d8d8c4bba5409cd1c7e719")); //DominoOrange2x4
+            // Skip Domino/Slab puzzles
+            string orangeChecker = "93386bb28305e764f91f81a506c866fc"; //OrangeSolveChecker
+            string orangeArea = "7f8046185b8c83940aed106445571a4d"; //GlobalPuzzle_Start AKA Conundrum Unsolved
+            string[] orangeDominoes =
+            {
+                "afc2f5e747d8d8c4bba5409cd1c7e719", //DominoOrange2x4
+                "01f719f15ba05d94bbc3ca3526d0ee2a", //DominoOrange1x3
+                "7605c17de4ef4fcd924c0b28f634adac"  //DominoOrangeKey_1
+            };
+            DominoPuzzleHelper.SkipDominoReqs(orangeChecker, orangeArea, orangeDominoes, ref __instance);
 
-            CurrentAreaIs areaCheck = new CurrentAreaIs();
-            areaCheck.m_Area = new BlueprintAreaReference();
-            areaCheck.m_Area.ReadGuidFromGuid(BlueprintGuid.Parse("7f8046185b8c83940aed106445571a4d")); //GlobalPuzzle_Start AKA conundrum unsolved
+            string cyanChecker = "0eda58f3f35c4375b7bd1ad4c42838a1"; //CyanPuzzleSolveChecker
+            string cyanArea = "17501f76cc3af8342ba6eccbd178fa94"; //GlobalPuzzle_Cyan AKA Core of the Riddle
+            string[] cyanDominoes =
+            {
+                "45a8d763a44a5a844a6a936f17e4b765", //DominoCyan1x3
+                "80d9f2dd22aa13a4491cb7f039ce89a6"  //DominoCyan1x4
+            };
+            DominoPuzzleHelper.SkipDominoReqs(cyanChecker, cyanArea, cyanDominoes, ref __instance);
 
-            OrAndLogic and = new OrAndLogic();
-            and.ConditionsChecker = new ConditionsChecker();
-            and.ConditionsChecker.Operation = Operation.And;
-            and.ConditionsChecker.Conditions = new Condition[2]
-                { dominoCheck, areaCheck };
+            string purpleChecker = "5edf4fa952634a7fa7bbf327cde8dace"; //PurplePuzzleSolveChecker
+            string purpleArea = "472f64e570afaab45aad7cc304919a40"; //GlobalPuzzle_Purple AKA Legacy of the Ancients
+            string[] purpleDominoes =
+            {
+                "f2766dfec3a62f6498745939d364f43a" //DominoPurple1x2
+            };
+            DominoPuzzleHelper.SkipDominoReqs(purpleChecker, purpleArea, purpleDominoes, ref __instance);
 
-            
-            ConundrumUnsolvedChecker.ActivationCondition.Conditions = new Condition[1];
-            ConundrumUnsolvedChecker.ActivationCondition.Conditions[0] = and;
+            string redChecker = "3ff62c12825a4d5497fe95932e803663"; //redPuzzleSolveChecker
+            string redArea = "b836f67468d1ba843aea89aaf0281c43"; //GlobalPuzzle_Red AKA Final Veil
+            string[] redDominoes =
+            {
+                "5c546f3b69885b94da8cb2fbf6e2fbe1" //DominoRed1x1
+            };
+            DominoPuzzleHelper.SkipDominoReqs(redChecker, redArea, redDominoes, ref __instance);
+
+            string greenChecker = "9b8e2bd53bdf4509832d120643b46f2e"; //greenPuzzleSolveChecker
+            string greenArea = "8ea944dbefc7c324599509805e65658d"; //GlobalPuzzle_green AKA Forgotten Secrets
+            string[] greenDominoes =
+            {
+                "e2ea6c90446bf9d478761a7c95948dee" //Dominogreen1x1
+            };
+            DominoPuzzleHelper.SkipDominoReqs(greenChecker, greenArea, greenDominoes, ref __instance);
 
 
 
-            // Update the Blueprint cache with the updated etude blueprint
-            __instance.AddCachedBlueprint(guid,(SimpleBlueprint)ConundrumUnsolvedChecker);
+            Main.Logger.Log("PuzzleSkip BlueprintsCache finish");
         }
 
     }
