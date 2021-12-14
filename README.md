@@ -10,7 +10,15 @@ Mod for Pathfinder: Wrath of the Righteous. Allows skipping puzzles.
 
 ## Content
 * Conundrum Unsolved
-    * Solve puzzle by looting the slabs, interacting with the puzzle, and closing the puzzle window
+    * Solve slab puzzle by looting the slabs, interacting with the puzzle, and closing the puzzle window
+* Core of the Riddle
+    * Solve slab puzzle by entering Core of the Riddle with the cyan slabs (found at Ravaged Long House)
+* Legacy of the Ancients
+    * Solve slab puzzle by entering Legacy of the Ancients with the purple slabs (found at Place of Execution)
+* Final Veil
+    * Solve slab puzzle by entering Final Veil with the red slabs (found at  Bone Hills)
+* Forgotten Secrets
+    * Solve slab puzzle by entering Forgotten Secrets with the green slabs (found at Shrine of Sacrilege)
 
 ## Planned content
 * The Secrets of Creation puzzles (Domino/Slab puzzles)
@@ -21,3 +29,4 @@ Mod for Pathfinder: Wrath of the Righteous. Allows skipping puzzles.
 * Narria's [Data Viewer mod](https://github.com/cabarius/DataViewer)
 * [Asset Studio](https://github.com/Perfare/AssetStudio)
 * Vek17's blueprint dump
+* Gamerworf's [Save games](https://www.nexusmods.com/pathfinderwrathoftherighteous/mods/45)
