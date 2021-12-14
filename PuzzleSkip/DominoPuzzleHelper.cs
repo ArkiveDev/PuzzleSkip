@@ -44,7 +44,7 @@ namespace PuzzleSkip
 
             // Combine checks
             OrAndLogic and = new OrAndLogic();
-            and.Comment = "PuzzleSkip - only check location and inventory slabs";
+            and.Comment = "PuzzleSkip - only check inventory slabs and location";
             and.ConditionsChecker = new ConditionsChecker();
             and.ConditionsChecker.Operation = Operation.And;
             and.ConditionsChecker.Conditions = new Condition[2]
