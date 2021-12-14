@@ -34,7 +34,7 @@ namespace PuzzleSkip
         [HarmonyPostfix]
         public static void Init(ref BlueprintsCache __instance)
         {
-            Main.Logger.Log("PuzzleSkip BlueprintsCache start");
+            Main.Logger.Log("PuzzleSkip - BlueprintsCache start");
 
             // Skip Domino/Slab puzzles
             string orangeChecker = "93386bb28305e764f91f81a506c866fc"; //OrangeSolveChecker
@@ -88,9 +88,9 @@ namespace PuzzleSkip
             };
             DominoPuzzleHelper.SkipDominoReqs(yellowChecker, yellowArea, yellowDominoes, ref __instance);
 
+            Main.Logger.Log("PuzzleSkip - Domino puzzles skipped");
 
-
-            Main.Logger.Log("PuzzleSkip BlueprintsCache finish");
+            Main.Logger.Log("PuzzleSkip - BlueprintsCache finish");
         }
 
     }
