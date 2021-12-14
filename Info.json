@@ -4,5 +4,6 @@
 	"Author": "Arkive",
 	"Version": "0.0.1",
 	"ManagerVersion": "0.23.0.0",
-	"EntryMethod": "PuzzleSkip.Main.Load"
+	"EntryMethod": "PuzzleSkip.Main.Load",
+	"Repository": "https://raw.githubusercontent.com/ArkiveDev/PuzzleSkip/master/Repository.json"
 }

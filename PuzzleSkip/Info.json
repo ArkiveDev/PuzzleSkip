@@ -1,7 +1,0 @@
-{
-  "Id": "ArkivePuzzleSkip",
-  "DisplayName": "Puzzle Skip",
-  "Author": "Arkive",
-  "Version": "0.0.1",
-  "EntryMethod": "PuzzleSkip.Main.Load"
-}
