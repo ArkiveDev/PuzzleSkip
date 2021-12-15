@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="DominoPuzzleHelper.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="MaskHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

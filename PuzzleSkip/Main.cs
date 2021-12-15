@@ -11,6 +11,7 @@ using Kingmaker.Blueprints.Items;
 using Kingmaker.Blueprints.Loot;
 using Kingmaker.View.MapObjects;
 using UnityEngine;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
 
 namespace PuzzleSkip
 {
@@ -89,6 +90,59 @@ namespace PuzzleSkip
             DominoPuzzleHelper.SkipDominoReqs(yellowChecker, yellowArea, yellowDominoes, ref __instance);
 
             Main.Logger.Log("PuzzleSkip - Domino puzzles skipped");
+
+
+
+            //String[] maskGUIDS = { 
+            //    "69c74236d17f98a41acb82996c4613bf", //PuzzleMask1_Item  Circle Mask
+            //    "43f591e7eb249de40b578f1f6a4aa3cf", //PuzzleMask2_Item  Summit Mask
+            //    "bb065d5357ce84942b9132a4ce42e43f", //PuzzleMask3_Item  Darkness
+            //    "2d24b105bc6d4ed4586e4052f8e4d621"  //PuzzleMask4_Item  Question
+            //};
+            //BlueprintGuid AHGUID = BlueprintGuid.Parse("b3f6d1173b0f197448e6321a544187a0"); //MaskPuzzleLootCont_1_CloseAction
+            //ActionsHolder AH = (ActionsHolder)__instance.Load(AHGUID);
+            //Conditional masksConditional = null;
+            //foreach (GameAction GA in AH.Actions.Actions)
+            //{
+            //    if (GA.AssetGuid == "231bc467627e49988c7c9ea9cb00d03a" ||
+            //        GA.AssetGuid == "231bc467-627e-4998-8c7c-9ea9cb00d03a") //Masks in the right places
+            //    {
+            //        masksConditional = (Conditional)GA;
+            //    }
+            //}
+
+            //// Create mask check conditions
+            //OrAndLogic maskCheck = new OrAndLogic();
+            //maskCheck.Comment = "Check for all 4 masks in inventory";
+            //maskCheck.ConditionsChecker = new ConditionsChecker();
+            //maskCheck.ConditionsChecker.Operation = Operation.And;
+            //maskCheck.ConditionsChecker.Conditions = new Condition[maskGUIDS.Length];
+            //int i = 0;
+            //foreach (string guidStr in maskGUIDS)
+            //{
+            //    ItemsEnough IEMask = new ItemsEnough();
+            //    IEMask.Quantity = 1;
+            //    IEMask.m_ItemToCheck = new BlueprintItemReference();
+            //    IEMask.m_ItemToCheck.ReadGuidFromGuid(BlueprintGuid.Parse(guidStr));
+            //    maskCheck.ConditionsChecker.Conditions[i++] = IEMask;
+            //}
+
+            //masksConditional.ConditionsChecker.Conditions = new Condition[1]
+            //    {maskCheck };
+
+            //__instance.AddCachedBlueprint(AHGUID, (SimpleBlueprint)AH);
+            String[] statueLootContainers =
+            {
+                "b3f6d1173b0f197448e6321a544187a0",
+                "881e3d32501b4b04683251539978aed5",
+                "2573e02967e95014c93266c845bc9f2e",
+                "1c031259c759d134ca117d6ca4ee21fc"
+            };
+            foreach (String guid in statueLootContainers)
+                MaskHelper.SkipMaskPuzzle(guid, ref __instance);
+
+            Main.Logger.Log("PuzzleSkip - Mask puzzle skipped");
+
 
             Main.Logger.Log("PuzzleSkip - BlueprintsCache finish");
         }

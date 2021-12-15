@@ -21,6 +21,8 @@ Mod for Pathfinder: Wrath of the Righteous. Allows skipping puzzles.
     * Solve slab puzzle by entering Forgotten Secrets with the green slabs (found at Shrine of Sacrilege)
 * Heart of Mystery
     * Solve slab puzzle by entering Heart of Mystery with the yellow slab/flask things (found at Laughing Caverns)
+* Nameless Ruins
+    * Solve mask puzzle by interacting with the puzzle, then closing the puzzle window with all 4 masks in your inventory
 
 ## Planned content
 * More than Nothing puzzles (arrows and symbols puzzles in The Enigma)
