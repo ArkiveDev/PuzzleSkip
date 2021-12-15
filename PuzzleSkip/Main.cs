@@ -2,16 +2,7 @@
 using UnityModManagerNet;
 using System.Reflection;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints;
-using Kingmaker.AreaLogic.Etudes;
-using Kingmaker.ElementsSystem;
 using System;
-using Kingmaker.Designers.EventConditionActionSystem.Conditions;
-using Kingmaker.Blueprints.Items;
-using Kingmaker.Blueprints.Loot;
-using Kingmaker.View.MapObjects;
-using UnityEngine;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
 
 namespace PuzzleSkip
 {
@@ -35,7 +26,7 @@ namespace PuzzleSkip
         [HarmonyPostfix]
         public static void Init(ref BlueprintsCache __instance)
         {
-            Main.Logger.Log("PuzzleSkip - BlueprintsCache start");
+            Main.Logger.Log("BlueprintsCache start");
 
             // Skip Domino/Slab puzzles
             string orangeChecker = "93386bb28305e764f91f81a506c866fc"; //OrangeSolveChecker
@@ -89,48 +80,9 @@ namespace PuzzleSkip
             };
             DominoPuzzleHelper.SkipDominoReqs(yellowChecker, yellowArea, yellowDominoes, ref __instance);
 
-            Main.Logger.Log("PuzzleSkip - Domino puzzles skipped");
+            Main.Logger.Log("Domino puzzles skipped");
 
-
-
-            //String[] maskGUIDS = { 
-            //    "69c74236d17f98a41acb82996c4613bf", //PuzzleMask1_Item  Circle Mask
-            //    "43f591e7eb249de40b578f1f6a4aa3cf", //PuzzleMask2_Item  Summit Mask
-            //    "bb065d5357ce84942b9132a4ce42e43f", //PuzzleMask3_Item  Darkness
-            //    "2d24b105bc6d4ed4586e4052f8e4d621"  //PuzzleMask4_Item  Question
-            //};
-            //BlueprintGuid AHGUID = BlueprintGuid.Parse("b3f6d1173b0f197448e6321a544187a0"); //MaskPuzzleLootCont_1_CloseAction
-            //ActionsHolder AH = (ActionsHolder)__instance.Load(AHGUID);
-            //Conditional masksConditional = null;
-            //foreach (GameAction GA in AH.Actions.Actions)
-            //{
-            //    if (GA.AssetGuid == "231bc467627e49988c7c9ea9cb00d03a" ||
-            //        GA.AssetGuid == "231bc467-627e-4998-8c7c-9ea9cb00d03a") //Masks in the right places
-            //    {
-            //        masksConditional = (Conditional)GA;
-            //    }
-            //}
-
-            //// Create mask check conditions
-            //OrAndLogic maskCheck = new OrAndLogic();
-            //maskCheck.Comment = "Check for all 4 masks in inventory";
-            //maskCheck.ConditionsChecker = new ConditionsChecker();
-            //maskCheck.ConditionsChecker.Operation = Operation.And;
-            //maskCheck.ConditionsChecker.Conditions = new Condition[maskGUIDS.Length];
-            //int i = 0;
-            //foreach (string guidStr in maskGUIDS)
-            //{
-            //    ItemsEnough IEMask = new ItemsEnough();
-            //    IEMask.Quantity = 1;
-            //    IEMask.m_ItemToCheck = new BlueprintItemReference();
-            //    IEMask.m_ItemToCheck.ReadGuidFromGuid(BlueprintGuid.Parse(guidStr));
-            //    maskCheck.ConditionsChecker.Conditions[i++] = IEMask;
-            //}
-
-            //masksConditional.ConditionsChecker.Conditions = new Condition[1]
-            //    {maskCheck };
-
-            //__instance.AddCachedBlueprint(AHGUID, (SimpleBlueprint)AH);
+            // Skip Mask puzzle in Unnamed Ruins
             String[] statueLootContainers =
             {
                 "b3f6d1173b0f197448e6321a544187a0",
@@ -141,10 +93,24 @@ namespace PuzzleSkip
             foreach (String guid in statueLootContainers)
                 MaskHelper.SkipMaskPuzzle(guid, ref __instance);
 
-            Main.Logger.Log("PuzzleSkip - Mask puzzle skipped");
+            Main.Logger.Log("Mask puzzle skipped");
 
 
-            Main.Logger.Log("PuzzleSkip - BlueprintsCache finish");
+            // Skip Enigma puzzles
+            EnigmaPuzzleHelper.SkipEnigmaPuzzle("fc34b75fb3f147d398607271584ee70f", ref __instance); //Arrow_Puzzle_1_complete
+            EnigmaPuzzleHelper.SkipEnigmaPuzzle("a4bbfd673dc442aba597860b6d3b3f65", ref __instance); //Arrow_Puzzle_2_complete
+            Main.Logger.Log("Arrow puzzles skipped");
+            EnigmaPuzzleHelper.SkipEnigmaPuzzle("568a5163b9a8492cbcef5c7aee97ebe4", ref __instance); //CommonPuzzle_1_complete (Memory / Matching)
+            EnigmaPuzzleHelper.SkipEnigmaPuzzle("3b22fd8b3c994b53a3732360630c15d0", ref __instance); //CommonPuzzle_2_complete 
+            EnigmaPuzzleHelper.SkipEnigmaPuzzle("211e3b7c140d4f40adb9f9d8687c2adc", ref __instance); //CommonPuzzle_3_complete 
+            EnigmaPuzzleHelper.SkipEnigmaPuzzle("964a2d978dec46c98754331578591273", ref __instance); //CommonPuzzle_4_complete 
+            Main.Logger.Log("Memory puzzles skipped");
+            EnigmaPuzzleHelper.SkipEnigmaPuzzle("2d096987069046118869129458f30517", ref __instance); //XO_Puzzle_1_complete (Tic Tac Toe)
+            EnigmaPuzzleHelper.SkipEnigmaPuzzle("8288ad6ec196461f963d6160edbfaca4", ref __instance); //XO_Puzzle_1_complete
+            Main.Logger.Log("3-in-a-row puzzles skipped");
+
+
+            Main.Logger.Log("BlueprintsCache finish");
         }
 
     }

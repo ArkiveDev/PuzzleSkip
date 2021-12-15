@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DominoPuzzleHelper.cs" />
+    <Compile Include="EnigmaPuzzleHelper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="MaskHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
