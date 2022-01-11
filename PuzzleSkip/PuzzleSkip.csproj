@@ -95,4 +95,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(TargetName).dll" "G:\Dev\Pathfinder Second Adventure Debug\Mods\$(TargetName)\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "G:\Dev\Pathfinder Second Adventure Debug\Mods\$(TargetName)\$(TargetName).pdb"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
